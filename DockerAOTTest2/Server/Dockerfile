@@ -10,6 +10,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
+RUN apt-get update
+RUN apt-get install -y python3
 RUN dotnet workload install wasm-tools 
 
 COPY ["DockerAOTTest2/Server/DockerAOTTest2.Server.csproj", "DockerAOTTest2/Server/"]
